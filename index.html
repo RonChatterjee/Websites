@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+	<head>
+    	<title>PICS</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript">
+			var i=0;
+			window.onload=function(){
+				$("#preload").remove();
+				setInterval(function(){
+						$(".slider li").eq(i).addClass("hidden");
+						$("#slider_buttons div").eq(i).removeClass("slide_but_active").addClass("slide_but");
+						if(i==3)
+							i=-1;
+						$(".slider li").eq(++i).removeClass("hidden");
+						$("#slider_buttons div").eq(i).removeClass("slide_but").addClass("slide_but_active");
+					},7000);
+				$("#slider_buttons").click(function(e){
+					if(e.target!=e.currentTarget)
+					{
+						$(".slider li").eq(i).addClass("hidden");
+						$("#slider_buttons div").eq(i).removeClass("slide_but_active").addClass("slide_but");
+						i=parseInt(e.target.id);
+						$(".slider li").eq(i).removeClass("hidden");
+						$("#slider_buttons div").eq(i).removeClass("slide_but").addClass("slide_but_active");
+					}	
+					});
+			}
+		</script>
+    </head>
+    <body>
+    	<div id="preload" class="preload_black">
+        LOADING
+        </div>
+    	<div id="wrapper">
+        	<div id="slider_images">
+            	<ul class="slider">
+                	<li ><img alt="image" src="images/img1.jpg"></li>
+                    <li class="hidden"><img alt="image" src="images/img2.jpg"></li>
+                    <li class="hidden"><img alt="image" src="images/img3.jpg"></li>
+                    <li class="hidden"><img alt="image" src="images/img4.jpg"></li>
+                </ul>
+            </div>
+            <div id="slider_buttons">
+            	<div id="0" class="slide_but_active"></div>
+                <div id="1" class="slide_but"></div>
+                <div id="2" class="slide_but"></div>
+                <div id="3" class="slide_but"></div>
+            </div>
+        </div>
+    </body>
+</html>
